@@ -91,7 +91,8 @@ function displayCards() {
             h1.textContent = thing[0];
     
             const p = document.createElement('p');
-            p.textContent = `poe.ninja: ${thing[1]} \n poe.watch: ${thing2}`;
+            // p.textContent = `poe.ninja: ${thing[1]} \n poe.watch: ${thing2}`;
+            p.innerText = `poe.ninja: ${thing[1]}\n poe.watch: ${thing2}`;
     
             container.appendChild(card);
             card.appendChild(h1);
