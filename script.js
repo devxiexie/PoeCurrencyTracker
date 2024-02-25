@@ -18,8 +18,9 @@ request1.onload = function () {
 
   if (request1.status >= 200 && request1.status < 400) {
     data.forEach((thing) => {   
-    //   console.log(thing.name,thing.mean,"poe.watch")
-      watcharr.push([thing.name,thing.mean]);
+      // console.log(thing.name,thing.mean,"poe.watch")
+      console.log(thing.icon)
+      watcharr.push([thing.name,thing.mean,thing.icon]);
     })
   } else {
     console.log('error')
@@ -45,7 +46,7 @@ request2.onload = function () {
       data.lines.forEach((thing) => {
         // console.log(thing.currencyTypeName,thing.chaosEquivalent,"poe.ninja");
         ninjaarr.push([thing.currencyTypeName,thing.chaosEquivalent])
-
+        // console.log(thing)
 
         // const card = document.createElement('div');
         // card.setAttribute('class', 'card');
@@ -70,16 +71,20 @@ request2.onload = function () {
 request2.send()
 
 
-console.log(watcharr)
-console.log(ninjaarr)
+// console.log(watcharr)
+// console.log(ninjaarr)
+
+
 function displayCards() {
     ninjaarr.forEach((thing) => {
         var goon=false;
         var thing2=0;
+        var imageThatWillBeUsed;
         for(var i=0;i<watcharr.length;i++){
             if(watcharr[i].includes(thing[0])){
                 goon=true
                 thing2=watcharr[i][1];
+                imageThatWillBeUsed=watcharr[i][2];
                 break;
             }
         }
@@ -88,7 +93,10 @@ function displayCards() {
             card.setAttribute('class', 'card');
     
             const h1 = document.createElement('h1');
-            h1.textContent = thing[0];
+            h1.innerText=thing[0];
+            var img = document.createElement("img");
+            img.src = imageThatWillBeUsed;
+            h1.appendChild(img);
     
             const p = document.createElement('p');
             // p.textContent = `poe.ninja: ${thing[1]} \n poe.watch: ${thing2}`;
